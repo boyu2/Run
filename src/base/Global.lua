@@ -1,0 +1,2 @@
+local Global = {}
+return Global
