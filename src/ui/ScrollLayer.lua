@@ -22,9 +22,9 @@ function ScrollLayer:onEnter()
     self:addChild(layer)
     self.scrollLayer = layer
 
-    self:createBgs()
+    --self:createBgs()
     self:createOxe()
-    self:scheduleUpdate()
+    --self:scheduleUpdate()
     self:addTouchListenerOneByOne()
 end
 
@@ -58,14 +58,24 @@ function ScrollLayer:createBgs()
     self.bgEdge = width * 2 - 10
 end
 
-function ScrollLayer:onTouchEnded(touch, event)
-    print("touch")
-    self.clickTimes = self.clickTimes + 1
-    
-    local move = cc.MoveBy:create(self.stopTime/2, cc.p(0, -200))
-    self.oxe:runAction(cc.Sequence:create(move, move:reverse()))
-    self:call(function() self.clickTimes = self.clickTimes - 1 end, self.stopTime)
+function ScrollLayer:onTouchBegan(touch, event)
+    local touchX = touch:getLocation().x
+    if touchX <= display.size.width/2 then
+        print("左边")
+    else
+        print("右边")
+    end
 end
+
+
+-- function ScrollLayer:onTouchEnded(touch, event)
+--     print("touch")
+--     self.clickTimes = self.clickTimes + 1
+    
+--     local move = cc.MoveBy:create(self.stopTime/2, cc.p(0, -200))
+--     self.oxe:runAction(cc.Sequence:create(move, move:reverse()))
+--     self:call(function() self.clickTimes = self.clickTimes - 1 end, self.stopTime)
+-- end
 
 function ScrollLayer:updateBgs()
     if self.bgEdge < -self.p.x + self.size.width then
