@@ -8,7 +8,6 @@ function MainLayer:onEnter()
     self:call(function()
         Global.scene:replace(require('ui.GameLayer'):create())
     end)
-    
 end
 
 function MainLayer:update(dt)

@@ -24,3 +24,5 @@ CC_DESIGN_RESOLUTION = {
         end
     end
 }
+
+cc.Director:getInstance():setDisplayStats(CC_SHOW_FPS)

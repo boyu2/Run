@@ -36,7 +36,7 @@ function NodeEx:__onExit()
 end
 
 function NodeEx:schedule(func, time)
-    Utils:schedule(self, func, time)
+    return Utils:schedule(self, func, time)
 end
 
 function NodeEx:call(func, delay)

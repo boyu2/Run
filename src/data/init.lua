@@ -1,0 +1,1 @@
+cc.exports.GameConfig = require("data.GameConfig")

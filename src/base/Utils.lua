@@ -1,10 +1,14 @@
 local Utils = {}
 
 function Utils:schedule(node, func, time)
-    local time = time or 0
-    return node:runAction(cc.RepeatForever:create(
+    local time = time or 1/60
+    local action = 
+        cc.RepeatForever:create(
         cc.Sequence:create(cc.DelayTime:create(time), 
-        cc.CallFunc:create(func))))
+        cc.CallFunc:create(func))
+    )
+    node:runAction(action)
+    return action
 end
 
 function Utils:unschedule(node, handler)
